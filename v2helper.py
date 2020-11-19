@@ -13,13 +13,13 @@ if password == "":
 def send_wechat(content):
     # title and content must be string.
     sckey = "SCU36037T22f0422808ccaabca3bb2f61044c0bc25c4290cd91060" # your key
-    title = "Ypork-v2ray签到通知"                                   
+    title = "Ypork.v2ray签到通知"                                   
     url = 'https://sc.ftqq.com/' + sckey + '.send'
     data = {'text':title,'desp':content}
     result = requests.post(url,data)
     return(result)    
 
-def get_trafficinfo()
+def get_trafficinfo():
     browser = webdriver.Firefox()
     url = 'https://forever.ypork.com/user'
     browser.get(url)
@@ -62,7 +62,7 @@ def main():
     if t["msg"]:
         print(t["msg"])
         get_trafficinfo()
-        send_wechat("登录信息："+lm + "\r\n签到信息："+t['msg'])
+        send_wechat("登录信息："+lm + "\n"+ "签到信息："+t['msg'])
     else:
         print("Error")
         send_wechat("错误信息："+t['msg'])
