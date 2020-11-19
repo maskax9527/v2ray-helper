@@ -25,10 +25,10 @@ def get_trafficinfo():
     browser.get(url)
     s = browser.find_element_by_xpath("//div[@id='remain']")
     remain = s.text
-    print remain
+    print(remain)
     s = browser.find_element_by_xpath("/html/body/main/div[2]/section/div[2]/div[1]/div[1]/div/div[1]/div[2]/div[3]/div/code")
     pathuse = s.text
-    pring pathuse
+    print(pathuse)
     
 
 def main():
