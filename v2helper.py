@@ -19,6 +19,18 @@ def send_wechat(content):
     result = requests.post(url,data)
     return(result)    
 
+def get_trafficinfo()
+    browser = webdriver.Firefox()
+    url = 'https://forever.ypork.com/user'
+    browser.get(url)
+    s = browser.find_element_by_xpath("//div[@id='remain']")
+    remain = s.text
+    print remain
+    s = browser.find_element_by_xpath("/html/body/main/div[2]/section/div[2]/div[1]/div[1]/div/div[1]/div[2]/div[3]/div/code")
+    pathuse = s.text
+    pring pathuse
+    
+
 def main():
     s = requests.session()
     s.headers = {
@@ -49,6 +61,7 @@ def main():
     t = json.loads(r2.text)
     if t["msg"]:
         print(t["msg"])
+        get_trafficinfo()
         send_wechat("登录信息："+lm + "\r\n签到信息："+t['msg'])
     else:
         print("Error")
