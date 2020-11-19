@@ -2,7 +2,6 @@ import requests
 import json
 import time
 import random
-from selenium import webdriver
 
 # 加入随机延时
 time.sleep(random.randint(1,3))
@@ -62,7 +61,6 @@ def main():
     t = json.loads(r2.text)
     if t["msg"]:
         print(t["msg"])
-        get_trafficinfo()
         send_wechat("登录信息："+lm + "\n"+ "签到信息："+t['msg'])
     else:
         print("Error")
