@@ -2,6 +2,7 @@ import requests
 import json
 import time
 import random
+from selenium import webdriver
 
 # 加入随机延时
 time.sleep(random.randint(1,3))
