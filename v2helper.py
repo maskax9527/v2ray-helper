@@ -22,10 +22,9 @@ def send_wechat(content):
     return(result)    
 
 def get_trafficeinfo_by_lxml():
-    url='http://movie.douban.com/top250?format=text'
-    contents = requests.get(url)
-    print(contents)  
-    soup = BeautifulSoup(contents,"html.parser")  
+    url='http://movie.douban.com/top250'
+    html = requests.get(url).content
+    Soup = BeautifulSoup(html,'html.parser',from_encoding='utf-8')
     print("豆瓣电影TOP250" + "\n" +" 影片名              评分       评价人数     链接 ")    
     for tag in soup.find_all('div', class_='info'):    
         m_name = tag.find('span', class_='title').get_text()        
