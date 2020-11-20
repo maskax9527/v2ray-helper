@@ -2,10 +2,9 @@ import requests
 import json
 import time
 import random
-from selenium import webdriver
-from lxml import etree
-import cssselect
-from lxml.html import etree
+import urllib2   
+import re   
+from bs4 import BeautifulSoup
 
 # 加入随机延时
 time.sleep(random.randint(1,3))
@@ -35,12 +34,19 @@ def get_trafficinfo_by_selenium():
     print(pathuse)
 
 def get_trafficeinfo_by_lxml():
-    url = 'https://forever.ypork.com/user'
-    html = request_dandan(url)
-    print(html)
-    tree = lxml.html.fromstring(html)
-    code = tree.cssselect('code#remain')
-    print(code[0].text)
+    page = urllib2.urlopen('http://movie.douban.com/top250?format=text')   
+    contents = page.read()   
+    print(contents)  
+    soup = BeautifulSoup(contents,"html.parser")  
+    print("豆瓣电影TOP250" + "\n" +" 影片名              评分       评价人数     链接 ")    
+    for tag in soup.find_all('div', class_='info'):    
+        m_name = tag.find('span', class_='title').get_text()        
+        m_rating_score = float(tag.find('span',class_='rating_num').get_text())          
+        m_people = tag.find('div',class_="star")  
+        m_span = m_people.findAll('span')  
+        m_peoplecount = m_span[3].contents[0]  
+        m_url=tag.find('a').get('href')  
+        print( m_name+"        "  +  str(m_rating_score)   + "           " + m_peoplecount + "    " + m_url )   
     
 def request_dandan(url):
     try:
