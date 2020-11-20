@@ -22,10 +22,10 @@ def send_wechat(content):
     return(result)    
 
 def get_trafficeinfo_by_lxml():
-    url='http://movie.douban.com/top250?format=text'
+    url='https://forever.ypork.com/user'
     html = requests.get(url).content
     soup = BeautifulSoup(html,'html.parser',from_encoding='utf-8')
-    pring(soup)
+    print(soup)
     
 def main():
     s = requests.session()
@@ -51,7 +51,6 @@ def main():
         send_wechat("登录失败")
             
     url2 = f"https://forever.ypork.com/user/checkin"
-
     r2 = s.post(url2, timeout=15)
     r2.raise_for_status()
     t = json.loads(r2.text)
