@@ -57,8 +57,8 @@ def main():
     print(t)
     if t["msg"]:
         print(t["msg"])
-        print(t["remain"])
-        #send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])    
+        send_wechat("原始签到信息："+ t)    
+        send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])    
     else:
         print("Error")
         send_wechat("错误信息："+t['msg'])
