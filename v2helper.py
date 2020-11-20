@@ -61,6 +61,7 @@ def main():
         r3 = s.get(url3).content
         soup = BeautifulSoup(r3,'html.parser',from_encoding='utf-8')
         #print(soup)
+        trafficinfo=""
         for progressbar in soup.find_all('div', class_='progressbar'):
             #print(progressbar)
             m_trafficinfo=progressbar.find('span',class_='traffic-info').get_text()
