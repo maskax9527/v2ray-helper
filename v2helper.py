@@ -63,10 +63,13 @@ def main():
         #print(soup)
         for progressbar in soup.find_all('div', class_='progressbar'):
             print(progressbar)
-            m_progressbar = progressbar.find('span', class_='title').get_text()
-            m_code = m_progressbar.findAll('code')
-            m_liuliang = m_code[0].contents[0]
-            print(m_liuliang)
+            m_trafficinfo=progressbar.find('span',class_='traffic-info').get_text()
+            print(m_trafficinfo)
+            #m_code = m_progressbar.findAll('code')
+            m_code=m_progressbar.find('code').get_text()
+            print(m_code)
+            #m_liuliang = m_code[0].contents[0]
+            #print(m_liuliang)
 
         #send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])    
     else:
