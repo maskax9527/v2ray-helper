@@ -3,6 +3,7 @@ import json
 import time
 import random
 from selenium import webdriver
+from lxml import etree
 
 # 加入随机延时
 time.sleep(random.randint(1,3))
@@ -20,7 +21,7 @@ def send_wechat(content):
     result = requests.post(url,data)
     return(result)    
 
-def get_trafficinfo():
+def get_trafficinfo_by_selenium():
     browser = webdriver.Firefox()
     url = 'https://forever.ypork.com/user'
     browser.get(url)
@@ -30,6 +31,14 @@ def get_trafficinfo():
     s = browser.find_element_by_xpath("/html/body/main/div[2]/section/div[2]/div[1]/div[1]/div/div[1]/div[2]/div[3]/div/code")
     pathuse = s.text
     print(pathuse)
+
+def get_trafficeinfo_by_lxml():
+    url = 'https://forever.ypork.com/user'
+    html = etree.HTML(url)
+    print(html)
+    result = etree.tostring(html)
+    print(result.decode("utf-8"))
+    
     
 
 def main():
@@ -62,7 +71,7 @@ def main():
     t = json.loads(r2.text)
     if t["msg"]:
         print(t["msg"])
-        get_trafficinfo()
+        get_trafficeinfo_by_lxml()
         send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])
     else:
         print("Error")
