@@ -62,11 +62,11 @@ def main():
         soup = BeautifulSoup(r3,'html.parser',from_encoding='utf-8')
         #print(soup)
         for progressbar in soup.find_all('div', class_='progressbar'):
-            print(progressbar)
+            #print(progressbar)
             m_trafficinfo=progressbar.find('span',class_='traffic-info').get_text()
             print(m_trafficinfo)
             #m_code = m_progressbar.findAll('code')
-            m_code=m_progressbar.find('code').get_text()
+            m_code=progressbar.find('code').get_text()
             print(m_code)
             #m_liuliang = m_code[0].contents[0]
             #print(m_liuliang)
