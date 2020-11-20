@@ -54,7 +54,6 @@ def main():
     r2 = s.post(url2, timeout=15)
     r2.raise_for_status()
     t = json.loads(r2.text)
-    print(t)
     if t["msg"]:
         print(t["msg"])
         url3='https://forever.ypork.com/user'
@@ -73,7 +72,9 @@ def main():
             #m_liuliang = m_code[0].contents[0]
             #print(m_liuliang)
         print(trafficinfo)
-        #send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])    
+        send_msg = '登录信息：'+lm + '\n' + '签到信息：' + t['msg'] + '\n' + '\n' + trafficinfo
+        print(send_msg)
+        send_wechat(send_msg)    
     else:
         print("Error")
         send_wechat("错误信息："+t['msg'])
