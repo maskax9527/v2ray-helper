@@ -67,12 +67,12 @@ def main():
             #print(m_trafficinfo)
             m_code=progressbar.find('code').get_text()
             #print(m_code)
-            trafficinfo = trafficinfo +'\n'+ m_trafficinfo + ' : '+ m_code
+            trafficinfo = trafficinfo +'\n' + '\n' + m_trafficinfo + ' : '+ m_code
             
             #m_liuliang = m_code[0].contents[0]
             #print(m_liuliang)
         print(trafficinfo)
-        send_msg = '登录信息：'+lm + '\n' + '签到信息：' + t['msg'] + '\n' + '\n' + trafficinfo
+        send_msg = '登录信息：'+lm + '\n' + '\n' + '签到信息：' + t['msg'] + '\n' + '\n' + trafficinfo
         print(send_msg)
         send_wechat(send_msg)    
     else:
