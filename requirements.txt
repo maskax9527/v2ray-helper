@@ -1,4 +1,4 @@
 requests
 selenium
 lxml
-cssselector
+beautifulsoup4
