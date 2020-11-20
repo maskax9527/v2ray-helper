@@ -37,7 +37,7 @@ def main():
     fromdata = {
         'email':'1098978935@qq.com',
         'passwd': password
-    }
+    
     headers0 = {
         'origin': 'https://forever.ypork.com',
         'referer' : 'https://forever.ypork.com/auth/login'
@@ -57,8 +57,13 @@ def main():
     print(t)
     if t["msg"]:
         print(t["msg"])
-        send_wechat("原始签到信息："+ t)    
-        send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])    
+        url3='https://forever.ypork.com/user'
+        r3 = s.get(url3).content
+        print(r3)
+        print(r3.text)
+        
+        #send_wechat("原始签到信息："+ t)    
+        #send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])    
     else:
         print("Error")
         send_wechat("错误信息："+t['msg'])
