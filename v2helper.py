@@ -4,6 +4,8 @@ import time
 import random
 from selenium import webdriver
 from lxml import etree
+import cssselect
+from lxml.html import etree
 
 # 加入随机延时
 time.sleep(random.randint(1,3))
@@ -34,12 +36,19 @@ def get_trafficinfo_by_selenium():
 
 def get_trafficeinfo_by_lxml():
     url = 'https://forever.ypork.com/user'
-    html = etree.HTML(url)
+    html = request_dandan(url)
     print(html)
-    result = etree.tostring(html)
-    print(result.decode("utf-8"))
+    tree = lxml.html.fromstring(html)
+    code = tree.cssselect('code#remain')
+    print(code[0].text)
     
-    
+def request_dandan(url):
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            return response.text
+    except requests.RequestExcepti
+       return None    
 
 def main():
     s = requests.session()
