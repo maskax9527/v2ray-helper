@@ -24,7 +24,7 @@ def send_wechat(content):
 
 def get_trafficeinfo_by_lxml():
     url='http://movie.douban.com/top250?format=text'
-    contents=urllib.request.urlopen(url).read()
+    contents=urllib3.request.urlopen(url).read()
     print(contents)  
     soup = BeautifulSoup(contents,"html.parser")  
     print("豆瓣电影TOP250" + "\n" +" 影片名              评分       评价人数     链接 ")    
