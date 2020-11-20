@@ -54,6 +54,7 @@ def main():
     r2 = s.post(url2, timeout=15)
     r2.raise_for_status()
     t = json.loads(r2.text)
+    print(t)
     if t["msg"]:
         print(t["msg"])
         get_trafficeinfo_by_lxml()
