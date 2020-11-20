@@ -2,7 +2,7 @@ import requests
 import json
 import time
 import random
-import urllib2   
+import urllib3 
 import re   
 from bs4 import BeautifulSoup
 
@@ -23,7 +23,7 @@ def send_wechat(content):
     return(result)    
 
 def get_trafficeinfo_by_lxml():
-    page = urllib2.urlopen('http://movie.douban.com/top250?format=text')   
+    page = urllib3.urlopen('http://movie.douban.com/top250?format=text')   
     contents = page.read()   
     print(contents)  
     soup = BeautifulSoup(contents,"html.parser")  
