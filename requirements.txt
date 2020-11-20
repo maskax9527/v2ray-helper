@@ -1,4 +1,4 @@
 requests
-selenium
+urllib2
 lxml
 beautifulsoup4
