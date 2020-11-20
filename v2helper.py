@@ -67,7 +67,7 @@ def main():
             #print(m_trafficinfo)
             m_code=progressbar.find('code').get_text()
             #print(m_code)
-            trafficinfo = trafficinfo +'\n' + '\n' + m_trafficinfo + ' : '+ m_code
+            trafficinfo = trafficinfo +'\n' + '\n' + m_trafficinfo + '：'+ m_code
             
             #m_liuliang = m_code[0].contents[0]
             #print(m_liuliang)
