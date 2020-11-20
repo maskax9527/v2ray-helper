@@ -22,7 +22,7 @@ def send_wechat(content):
     return(result)    
 
 def get_trafficeinfo_by_lxml():
-    url='http://movie.douban.com/top250'
+    url='http://movie.douban.com/top250?format=text'
     html = requests.get(url).content
     soup = BeautifulSoup(html,'html.parser',from_encoding='utf-8')
     print("豆瓣电影TOP250" + "\n" +" 影片名              评分       评价人数     链接 ")    
@@ -33,7 +33,7 @@ def get_trafficeinfo_by_lxml():
         m_span = m_people.findAll('span')  
         m_peoplecount = m_span[3].contents[0]  
         m_url=tag.find('a').get('href')  
-        print( m_name+"        "  +  str(m_rating_score)   + "           " + m_peoplecount + "    " + m_url )   
+        print( m_name+"        "  +  str(m_rating_score)   + "           " + m_peoplecount + "    " + m_url )       "  +  str(m_rating_score)   + "           " + m_peoplecount + "    " + m_url )   
     
 def main():
     s = requests.session()
