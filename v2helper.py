@@ -21,12 +21,12 @@ def send_wechat(content):
     result = requests.post(url,data)
     return(result)    
 
-def get_trafficeinfo_by_lxml():
+def get_trafficeinfo_by_soup():
     url='https://forever.ypork.com/user'
     html = requests.get(url).content
     soup = BeautifulSoup(html,'html.parser',from_encoding='utf-8')
     print(soup)
-    
+     
 def main():
     s = requests.session()
     s.headers = {
@@ -60,9 +60,14 @@ def main():
         url3='https://forever.ypork.com/user'
         r3 = s.get(url3).content
         soup = BeautifulSoup(r3,'html.parser',from_encoding='utf-8')
-        print(soup)
-        
-        #send_wechat("原始签到信息："+ t)    
+        #print(soup)
+        for progressbar in soup.find_all('div', class_='progressbar'):
+            print(progressbar)
+            m_progressbar = progressbar.find('span', class_='title').get_text()
+            m_code = m_progressbar.findAll('code')
+            m_liuliang = m_code[0].contents[0]
+            print(m_liuliang)
+
         #send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])    
     else:
         print("Error")
