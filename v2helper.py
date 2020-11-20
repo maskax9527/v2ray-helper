@@ -56,14 +56,12 @@ def main():
     t = json.loads(r2.text)
     print(t)
     if t["msg"]:
-        print(t["msg"])
-        
+        print(t["msg"])     
         url3 = f"https://forever.ypork.com/user"
         r3 = s.post(url3, timeout=15)
-        r3.raise_for_status()
+        print(r3)
         t3 = json.loads(r3.text)
-        print(t3)
-              
+        print(t3)             
         send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])
     else:
         print("Error")
