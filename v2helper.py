@@ -52,13 +52,13 @@ def main():
             
     url2 = f"https://forever.ypork.com/user/checkin"
     r2 = s.post(url2, timeout=15)
-    print(r2)
     r2.raise_for_status()
     t = json.loads(r2.text)
     print(t)
     if t["msg"]:
         print(t["msg"])
-        #send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])
+        print(t["remain"])
+        #send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])    
     else:
         print("Error")
         send_wechat("错误信息："+t['msg'])
