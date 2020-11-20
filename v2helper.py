@@ -57,7 +57,13 @@ def main():
     print(t)
     if t["msg"]:
         print(t["msg"])
-        get_trafficeinfo_by_lxml()
+        
+        url3 = f"https://forever.ypork.com/user"
+        r3 = s.post(url3, timeout=15)
+        r3.raise_for_status()
+        t3 = json.loads(r3.text)
+        print(t3)
+              
         send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])
     else:
         print("Error")
