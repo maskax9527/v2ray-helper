@@ -37,7 +37,7 @@ def main():
     fromdata = {
         'email':'1098978935@qq.com',
         'passwd': password
-    
+    }
     headers0 = {
         'origin': 'https://forever.ypork.com',
         'referer' : 'https://forever.ypork.com/auth/login'
