@@ -2,7 +2,7 @@ import requests
 import json
 import time
 import random
-import urllib3 
+import urllib3.request
 import re   
 from bs4 import BeautifulSoup
 
@@ -23,8 +23,8 @@ def send_wechat(content):
     return(result)    
 
 def get_trafficeinfo_by_lxml():
-    page = urllib3.urlopen('http://movie.douban.com/top250?format=text')   
-    contents = page.read()   
+    url='http://movie.douban.com/top250?format=text'
+    contents=urllib.request.urlopen(url).read()
     print(contents)  
     soup = BeautifulSoup(contents,"html.parser")  
     print("豆瓣电影TOP250" + "\n" +" 影片名              评分       评价人数     链接 ")    
