@@ -22,17 +22,6 @@ def send_wechat(content):
     result = requests.post(url,data)
     return(result)    
 
-def get_trafficinfo_by_selenium():
-    browser = webdriver.Firefox()
-    url = 'https://forever.ypork.com/user'
-    browser.get(url)
-    s = browser.find_element_by_xpath("//div[@id='remain']")
-    remain = s.text
-    print(remain)
-    s = browser.find_element_by_xpath("/html/body/main/div[2]/section/div[2]/div[1]/div[1]/div/div[1]/div[2]/div[3]/div/code")
-    pathuse = s.text
-    print(pathuse)
-
 def get_trafficeinfo_by_lxml():
     page = urllib2.urlopen('http://movie.douban.com/top250?format=text')   
     contents = page.read()   
@@ -48,14 +37,6 @@ def get_trafficeinfo_by_lxml():
         m_url=tag.find('a').get('href')  
         print( m_name+"        "  +  str(m_rating_score)   + "           " + m_peoplecount + "    " + m_url )   
     
-def request_dandan(url):
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            return response.text
-    except requests.RequestExcepti
-       return None    
-
 def main():
     s = requests.session()
     s.headers = {
