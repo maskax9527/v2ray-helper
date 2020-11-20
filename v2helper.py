@@ -59,8 +59,8 @@ def main():
         print(t["msg"])
         url3='https://forever.ypork.com/user'
         r3 = s.get(url3).content
-        print(r3)
-        print(r3.text)
+        soup = BeautifulSoup(r3,'html.parser',from_encoding='utf-8')
+        print(soup)
         
         #send_wechat("原始签到信息："+ t)    
         #send_wechat("登录信息："+lm + "\n签到信息："+t['msg'])    
